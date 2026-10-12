@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Wartime safety instructions for residents of Saudi Arabia in English, Tagalog, Urdu, Hindi and Bengali, based only on official Saudi guidance.">
+<title>Safe in Saudi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@700;800&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap">
+<style>
+/* Layout: one narrow column like a laminated safety card: signage headline, an always-visible 998 strip, then one panel per situation. */
+:root{
+  --bg:#f3f4f2; --surface:#ffffff; --ink:#14171a; --muted:#565d64; --line:#d8dcd7;
+  --warn:#f2b705; --on-warn:#14171a;
+  --stop:#b80f2a; --on-stop:#ffffff;
+  --go:#0d6e47; --go-soft:#e3f2ea;
+  --focus:#1d5fd1;
+  --f-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-ar:"Noto Naskh Arabic","Geeza Pro",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111315; --surface:#1a1d20; --ink:#eceeeb; --muted:#9ba2a9; --line:#2d3135;
+    --warn:#f5c22e; --on-warn:#14171a;
+    --stop:#9e0e25; --on-stop:#ffffff;
+    --go:#46c48d; --go-soft:#16302a;
+    --focus:#7aa7ff; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111315; --surface:#1a1d20; --ink:#eceeeb; --muted:#9ba2a9; --line:#2d3135;
+  --warn:#f5c22e; --on-warn:#14171a;
+  --stop:#9e0e25; --on-stop:#ffffff;
+  --go:#46c48d; --go-soft:#16302a;
+  --focus:#7aa7ff; color-scheme:dark;
+}
+html:lang(ur){--f-body:"Atkinson Hyperlegible","Noto Nastaliq Urdu","Noto Naskh Arabic",serif;--f-display:"Barlow Condensed","Noto Nastaliq Urdu","Noto Naskh Arabic",serif}
+html:lang(hi){--f-body:"Atkinson Hyperlegible","Noto Sans Devanagari",sans-serif;--f-display:"Barlow Condensed","Noto Sans Devanagari",sans-serif}
+html:lang(bn){--f-body:"Atkinson Hyperlegible","Noto Sans Bengali",sans-serif;--f-display:"Barlow Condensed","Noto Sans Bengali",sans-serif}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.55;padding-inline:16px;padding-block:0 48px}
+html:lang(ur) body{line-height:2.1}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:16px 4px}
+.brand{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.brand svg{width:22px;height:22px;color:var(--go)}
+.lang{display:flex;flex-wrap:wrap;gap:6px}
+.lang button{font-weight:700;font-size:.95rem;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer;line-height:1.6}
+.lang button[data-lang="ur"]{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;font-size:.9rem;padding-block:0 6px}
+.lang button[data-lang="hi"]{font-family:"Noto Sans Devanagari",sans-serif}
+.lang button[data-lang="bn"]{font-family:"Noto Sans Bengali",sans-serif}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:12px}
+.stripe{height:12px;border-radius:2px;background:repeating-linear-gradient(-45deg,var(--warn) 0 14px,var(--ink) 14px 28px)}
+h1{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.4rem,9vw,3.6rem);line-height:.95;margin:4px 0 0;letter-spacing:.01em;text-wrap:balance}
+html:lang(hi) h1,html:lang(bn) h1{font-weight:700;font-size:clamp(2rem,7.5vw,3rem);line-height:1.25}
+html:lang(ur) h1{font-weight:700;font-size:clamp(1.8rem,6.5vw,2.6rem);line-height:1.7}
+.lede{margin:0;max-width:60ch;font-size:1.1rem}
+.note{margin:0;font-size:.92rem;color:var(--muted);max-width:60ch}
+.draft{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.04em;background:var(--warn);color:var(--on-warn);padding:3px 10px;border-radius:4px}
+
+/* 998 strip */
+.sos{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--ink);color:var(--bg);border-radius:10px;padding:14px 18px}
+.sos span{font-weight:700;font-size:1rem}
+.sos b{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:2.6rem;line-height:1;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+
+/* employer callout, always Arabic */
+.emp{direction:rtl;text-align:right;font-family:var(--f-ar);line-height:1.8;background:var(--go-soft);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.emp h2{font-family:var(--f-ar);text-transform:none;font-size:1.3rem;font-weight:700;letter-spacing:0;line-height:1.5;margin:0}
+.emp p{margin:0;font-size:1rem}
+.emp .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.emp .row span{font-weight:700;font-size:.95rem}
+.chip{border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:999px;padding:2px 12px;font-size:.92rem;font-weight:700;cursor:pointer;line-height:1.7}
+.chip[data-copy="ur"]{font-family:"Noto Nastaliq Urdu",serif;padding-block:0 4px}
+.chip[data-copy="hi"]{font-family:"Noto Sans Devanagari",sans-serif}
+.chip[data-copy="bn"]{font-family:"Noto Sans Bengali",sans-serif}
+.chip[data-copy="en"],.chip[data-copy="tl"]{font-family:"Atkinson Hyperlegible",sans-serif}
+.emp .toast{font-family:var(--f-ar)}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;grid-template-columns:52px 1fr;gap:4px 16px}
+.panel>*{min-width:0}
+.ico{grid-row:span 2;width:52px;height:52px;border-radius:8px;display:grid;place-items:center;background:var(--go-soft);color:var(--go)}
+.ico svg{width:30px;height:30px}
+h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:1.65rem;line-height:1.05;margin:2px 0 0;letter-spacing:.015em;text-wrap:balance}
+html:lang(hi) h2,html:lang(bn) h2{font-size:1.4rem;line-height:1.35}
+html:lang(ur) h2{font-size:1.3rem;line-height:1.9}
+.body{display:flex;flex-direction:column;gap:10px}
+.body p{margin:0}
+ul,ol{margin:0;padding-inline-start:1.2em;display:flex;flex-direction:column;gap:8px}
+li::marker{color:var(--muted)}
+.body a{color:var(--go);font-weight:700;text-underline-offset:2px}
+.ar{font-family:var(--f-ar);font-size:1.1em;font-weight:700;display:inline-block;padding:0 6px;background:var(--bg);border:1px solid var(--line);border-radius:4px;line-height:1.7}
+
+.panel.stop{background:var(--stop);color:var(--on-stop);border-color:var(--stop)}
+.panel.stop .ico{background:var(--on-stop);color:var(--stop)}
+.panel.stop li::marker{color:var(--on-stop)}
+.panel.stop .lead{font-weight:700;font-size:1.12rem}
+.panel.haz .ico{background:var(--warn);color:var(--on-warn)}
+
+ol.steps{list-style:none;padding:0;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start}
+ol.steps li::before{content:counter(s);font:800 1.05rem/30px "Barlow Condensed",sans-serif;text-align:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--surface)}
+.call{font-weight:700}
+.call b{font-family:"Barlow Condensed",sans-serif;font-size:1.5rem;letter-spacing:.05em;font-variant-numeric:tabular-nums}
+
+/* siren tones */
+.tones{list-style:none;padding:0;gap:12px}
+.tones li{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.tones li>*{min-width:0}
+.wave{width:84px;height:32px;color:var(--ink)}
+.tones b{display:block}
+.tones small{display:block;color:var(--muted);font-size:.92rem}
+.alert{font-size:.95rem;border-inline-start:4px solid var(--warn);padding-inline-start:12px}
+
+/* embassies */
+.emb{list-style:none;padding:0;gap:8px}
+.emb a{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);text-decoration:none;color:var(--ink);font-weight:700}
+.emb a:hover{border-color:var(--ink)}
+.emb a span:last-child{color:var(--go)}
+.emb li.mine a{border-color:var(--go);background:var(--go-soft)}
+
+/* quiz */
+.q{display:flex;flex-direction:column;gap:8px;padding-block:6px}
+.q p{font-weight:700}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts button{text-align:start;font-size:1rem;padding:10px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:inherit}
+.opts button:hover:not(:disabled){border-color:var(--ink)}
+.opts button:disabled{cursor:default}
+.opts button.right{border-color:var(--go);background:var(--go-soft);font-weight:700}
+.opts button.wrong{border-color:var(--stop);text-decoration:line-through}
+.fb{font-weight:700;min-height:1.5em}
+.fb.ok{color:var(--go)}
+
+/* share */
+.share{border:2px dashed var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.share h2{font-size:1.45rem}
+.share p{margin:0}
+.msg{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;white-space:pre-wrap;font-size:1rem;overflow-wrap:anywhere}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font-weight:700;font-size:1rem;border-radius:8px;padding:10px 18px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;line-height:1.5}
+.btn.ghost{background:transparent;color:var(--ink)}
+.toast{font-weight:700;color:var(--go)}
+
+footer{display:flex;flex-direction:column;gap:10px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+footer h3{font-size:.8rem;font-weight:700;letter-spacing:.08em;margin:0;color:var(--ink)}
+footer ul{gap:6px}
+footer a{text-underline-offset:2px}
+footer p{margin:0}
+
+@media (max-width:420px){
+  .panel{grid-template-columns:1fr}
+  .ico{grid-row:auto}
+  .tones li{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="bar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke-linecap="round"/></svg>
+      <span dir="ltr">Safe in Saudi</span>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="btn-en" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" id="btn-tl" data-lang="tl" aria-pressed="false">Tagalog</button>
+      <button type="button" id="btn-ur" data-lang="ur" aria-pressed="false" lang="ur">اردو</button>
+      <button type="button" id="btn-hi" data-lang="hi" aria-pressed="false" lang="hi">हिन्दी</button>
+      <button type="button" id="btn-bn" data-lang="bn" aria-pressed="false" lang="bn">বাংলা</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="stripe" aria-hidden="true"></div>
+    <span class="draft" id="draft" hidden data-i18n="draft"></span>
+    <h1 data-i18n="hero"></h1>
+    <p class="lede" data-i18n="lede"></p>
+    <p class="note" data-i18n="note"></p>
+  </section>
+
+  <div class="sos"><span data-i18n="sos"></span><b>998</b></div>
+
+  <aside class="emp" lang="ar" dir="rtl" aria-label="للكفلاء وأصحاب المنازل">
+    <h2>عندك عاملة منزلية أو سائق؟</h2>
+    <p>أرسل لهم هذه الصفحة. فيها تعليمات السلامة بلغتهم. أهم نقطة: تصوير الاعتراضات أو مواقع سقوط الشظايا ونشرها يعرّض صاحبها للمساءلة النظامية، وكثير منهم ما يدري.</p>
+    <div class="row">
+      <span>انسخ رسالة جاهزة بلغتهم:</span>
+      <button type="button" class="chip" id="cp-en" data-copy="en">English</button>
+      <button type="button" class="chip" id="cp-tl" data-copy="tl">Tagalog</button>
+      <button type="button" class="chip" id="cp-ur" data-copy="ur">اردو</button>
+      <button type="button" class="chip" id="cp-hi" data-copy="hi">हिन्दी</button>
+      <button type="button" class="chip" id="cp-bn" data-copy="bn">বাংলা</button>
+      <span class="toast" id="emp-toast" role="status" aria-live="polite"></span>
+    </div>
+  </aside>
+
+  <section class="panel haz" id="tones">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 24v-7a7 7 0 0 1 14 0v7"/><path d="M6 24h20v3H6z"/><path d="M16 4v3M5.5 8.5l2 2M26.5 8.5l-2 2M2.5 17h2.5M27 17h2.5"/></svg></div>
+    <h2 data-i18n="toneT"></h2>
+    <div class="body">
+      <p data-i18n="toneLead"></p>
+      <ul class="tones" id="tone-list"></ul>
+      <p class="alert" data-i18n="alert"></p>
+    </div>
+  </section>
+
+  <section class="panel" id="inside">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15 16 5l12 10"/><path d="M7 13v14h18V13"/><path d="M13 27v-8h6v8"/></svg></div>
+    <h2 data-i18n="sirenT"></h2>
+    <div class="body"><ul data-list="sirenL"></ul></div>
+  </section>
+
+  <section class="panel" id="outside">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20l2.5-7h15L26 20"/><rect x="4" y="20" width="24" height="6" rx="2"/><circle cx="9.5" cy="26.5" r="2"/><circle cx="22.5" cy="26.5" r="2"/></svg></div>
+    <h2 data-i18n="outT"></h2>
+    <div class="body"><ul data-list="outL"></ul></div>
+  </section>
+
+  <section class="panel stop" id="nofilm">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h5l2-3h10l2 3h5v14H4z"/><circle cx="16" cy="17.5" r="4.5"/><path d="M4 4l24 24"/></svg></div>
+    <h2 data-i18n="filmT"></h2>
+    <div class="body">
+      <p class="lead" data-i18n="filmLead"></p>
+      <ul data-list="filmL"></ul>
+    </div>
+  </section>
+
+  <section class="panel" id="report">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="14" height="26" rx="3"/><path d="M14 25h4"/><path d="M12.5 13.5l3.5-3.5 3.5 3.5M16 10v8"/></svg></div>
+    <h2 data-i18n="repT"></h2>
+    <div class="body">
+      <p data-i18n="repLead"></p>
+      <ol class="steps" data-list="repL"></ol>
+    </div>
+  </section>
+
+  <section class="panel haz" id="debris">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4 2.5 27.5h27z"/><path d="M16 13v7"/><circle cx="16" cy="23.5" r=".6" fill="currentColor"/></svg></div>
+    <h2 data-i18n="debT"></h2>
+    <div class="body">
+      <ul data-list="debL"></ul>
+      <p class="call"><span data-i18n="debCall"></span> <b>998</b></p>
+    </div>
+  </section>
+
+  <section class="panel" id="news">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h17v20H8a3 3 0 0 1-3-3z"/><path d="M22 11h5v12a3 3 0 0 1-3 3h-2"/><path d="M9 11h9M9 15h9M9 19h6"/></svg></div>
+    <h2 data-i18n="newsT"></h2>
+    <div class="body"><ul data-list="newsL"></ul></div>
+  </section>
+
+  <section class="panel" id="embassy">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 16 5l12 7"/><path d="M6 12v12M11 12v12M16 12v12M21 12v12M26 12v12"/><path d="M3 27h26"/></svg></div>
+    <h2 data-i18n="embT"></h2>
+    <div class="body">
+      <p data-i18n="embLead"></p>
+      <ul class="emb" id="emb-list"></ul>
+    </div>
+  </section>
+
+  <section class="panel" id="help">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 27s-10-6.2-10-13.2A5.6 5.6 0 0 1 16 10a5.6 5.6 0 0 1 10 3.8C26 20.8 16 27 16 27z"/></svg></div>
+    <h2 data-i18n="helpT"></h2>
+    <div class="body">
+      <p data-i18n="helpLead"></p>
+      <ul data-list="helpL"></ul>
+    </div>
+  </section>
+
+  <section class="panel" id="quiz">
+    <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M12.5 12.5a3.5 3.5 0 1 1 5 3.2c-1 .5-1.5 1.3-1.5 2.3v.5"/><circle cx="16" cy="22.5" r=".6" fill="currentColor"/></svg></div>
+    <h2 data-i18n="quizT"></h2>
+    <div class="body">
+      <p data-i18n="quizLead"></p>
+      <div id="quiz-body"></div>
+    </div>
+  </section>
+
+  <section class="share" id="share">
+    <h2 data-i18n="shareT"></h2>
+    <p data-i18n="shareLead"></p>
+    <div class="msg" id="msg"></div>
+    <div class="actions">
+      <button type="button" class="btn" id="copy" data-i18n="copy"></button>
+      <a class="btn ghost" id="wa" href="https://wa.me/" target="_blank" rel="noopener" data-i18n="wa"></a>
+      <span class="toast" id="toast" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <footer>
+    <p data-i18n="checked"></p>
+    <h3 data-i18n="srcT"></h3>
+    <ul dir="ltr" lang="en">
+      <li><a href="https://www.arabnews.pk/node/2637894/saudi-arabia" target="_blank" rel="noopener">Arab News: Interior Ministry warning on interception footage, and the Tawakkalna reporting service</a></li>
+      <li><a href="https://gulfnews.com/world/gulf/saudi/saudi-arabia-warns-against-filming-missile-drone-interceptions-and-impact-sites-1.500699974" target="_blank" rel="noopener">Gulf News: Warning covers impact sites and debris</a></li>
+      <li><a href="https://www.okaz.com.sa/news/local/2220461" target="_blank" rel="noopener">Okaz: The three siren tones and cell broadcast alerts</a></li>
+      <li><a href="https://www.okaz.com.sa/local/saudi-arabia/2239328" target="_blank" rel="noopener">Okaz: Civil Defense instructions when sirens sound</a></li>
+      <li><a href="https://english.aawsat.com/node/5322156" target="_blank" rel="noopener">Asharq Al-Awsat: Civil Defense on open areas, gathering, filming and 998</a></li>
+      <li><a href="https://www.okaz.com.sa/local/saudi-arabia/2240261" target="_blank" rel="noopener">Okaz: Ministry of Defense "Suspicious Aerial Sightings" service</a></li>
+      <li><a href="https://998.gov.sa" target="_blank" rel="noopener">Saudi Civil Defense official site (998.gov.sa)</a></li>
+      <li><a href="https://www.moh.gov.sa/en/ministry/mediacenter/news/pages/news-2019-03-14-001.aspx" target="_blank" rel="noopener">Ministry of Health: Wateen blood donation app</a></li>
+      <li><a href="https://saudipedia.com/en/volunteering-in-saudi-arabia" target="_blank" rel="noopener">Saudipedia: National Volunteer Portal</a></li>
+    </ul>
+    <p data-i18n="foot"></p>
+  </footer>
+</div>
+
+<script>
+const BASE = "https://claude.ai/artifact/Emb4R2DiMbKYkimKVtGnKa";
+const AR = '<span class="ar" lang="ar" dir="rtl">المشاهدات الجوية المشبوهة</span>';
+const L = (href, text) => '<a href="' + href + '" target="_blank" rel="noopener" dir="ltr">' + text + '</a>';
+const NVG = L("https://nvg.gov.sa", "nvg.gov.sa");
+const WAVES = [
+  '<svg class="wave" viewBox="0 0 84 32" aria-hidden="true"><g fill="currentColor"><rect x="2" y="10" width="12" height="12" rx="2"/><rect x="24" y="10" width="12" height="12" rx="2"/><rect x="46" y="10" width="12" height="12" rx="2"/><rect x="68" y="10" width="12" height="12" rx="2"/></g></svg>',
+  '<svg class="wave" viewBox="0 0 84 32" aria-hidden="true"><path d="M2 16 Q 12 2 22 16 T 42 16 T 62 16 T 82 16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
+  '<svg class="wave" viewBox="0 0 84 32" aria-hidden="true"><path d="M2 16H82" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>'
+];
+const EMB = {
+  ph: ["https://riyadhpe.dfa.gov.ph/contact-us", "Philippine Embassy, Riyadh"],
+  in: ["https://www.eoiriyadh.gov.in", "Embassy of India, Riyadh"],
+  pk: ["https://beoe.gov.pk/community-welfare-attache-offices", "Pakistan: Community Welfare Attaché offices"],
+  bd: ["https://riyadh.mofa.gov.bd/", "Embassy of Bangladesh, Riyadh"]
+};
+const EMB_ORDER = { en:["ph","in","pk","bd"], tl:["ph","in","pk","bd"], ur:["pk","in","bd","ph"], hi:["in","pk","bd","ph"], bn:["bd","in","pk","ph"] };
+const MINE = { tl:"ph", ur:"pk", hi:"in", bn:"bd" };
+
+const T = {
+en:{
+  draft:"",
+  hero:"Stay inside. Don’t film. Report.",
+  lede:"Safety instructions for everyone living in Saudi Arabia during the current situation. Short, simple, and based only on official guidance.",
+  note:"A volunteer project. This is not a government website. Every instruction here comes from official Saudi statements, linked at the bottom.",
+  sos:"Civil Defense emergency",
+  toneT:"Know the three siren sounds",
+  toneLead:"Each sound lasts 60 seconds.",
+  tones:[["Danger is near","Steady sound that goes on and off","Go to a safe place now."],["Danger is happening","Rising and falling sound, like a wave","You should already be inside. If not, go inside immediately."],["Danger has passed","One long, continuous sound","Still follow official instructions before you go outside."]],
+  alert:"Your phone may also get a warning message with a special sound from Saudi Arabia’s National Early Warning Platform. Do not ignore it.",
+  sirenT:"If you are inside a building",
+  sirenL:["Go to the safest place inside. An inner room away from windows is best.","Stay there until the danger has passed.","Stay away from windows and glass. Do not go onto balconies or rooftops.","Follow official instructions only."],
+  outT:"If you are outside or driving",
+  outL:["Go into the nearest building right away. Stay out of open areas.","Stay away from glass.","If you are driving, pull over to the side of the road, away from bridges and tall buildings.","Do not stop to watch or film."],
+  filmT:"Never film. Never share.",
+  filmLead:"Do not photograph or video missiles, drones, interceptions, or places where debris falls. Not even to send to friends or family.",
+  filmL:["The Ministry of Interior has warned that filming, publishing, or sharing this information can lead to legal action.","This applies to everyone in Saudi Arabia, citizens and foreign residents.","Forwarding a video you received is also sharing. Delete it and do not send it on.","Why: these videos can show the enemy where air defences are and how they work. That puts lives at risk."],
+  repT:"Saw a drone or missile in the sky? Report it.",
+  repLead:"The Ministry of Defense has a reporting service inside the Tawakkalna app.",
+  repL:["Stay in a safe place. Do not go outside to look.","Open the Tawakkalna app.","Find the service called Suspicious Aerial Sightings. In Arabic: "+AR,"Send your report through the app."],
+  debT:"Found debris or a strange object?",
+  debL:["Do not go near it. Do not touch it.","Do not gather around it or stand and watch.","Do not film it."],
+  debCall:"Call Civil Defense:",
+  newsT:"Only trust official news",
+  newsL:["Do not believe or forward rumours, voice notes, or videos from unknown sources.","Get news from official Saudi channels, such as Civil Defense (998.gov.sa, @SaudiDCD) and the Saudi Press Agency."],
+  embT:"Your embassy",
+  embLead:"Your embassy can help if something happens to you. Save its official page now.",
+  helpT:"Want to help? Use official channels",
+  helpLead:"If you want to give something back, these are the official ways to do it.",
+  helpL:["<b>Give blood:</b> use the Ministry of Health’s Wateen app to find a blood bank near you.","<b>Volunteer:</b> check the National Volunteer Portal at "+NVG+" for opportunities open to you.","Do not send money to donation requests on WhatsApp or social media. They may be scams."],
+  quizT:"Quick check",
+  quizLead:"Three questions. Tap an answer.",
+  right:"Correct.", wrong:"Not quite. The right answer is marked.",
+  quiz:[
+    ["You see debris from a drone on the street. What do you do?",["Take a photo to warn others","Stay away and call 998","Move it off the road"],1],
+    ["A friend sends you a video of a missile being intercepted. What do you do?",["Forward it to your family","Post it with a warning","Delete it and do not share it"],2],
+    ["The siren sounds while you are driving. What do you do?",["Drive faster to get home","Pull over away from bridges and tall buildings","Stop under a bridge for cover"],1]
+  ],
+  shareT:"Share this with others",
+  shareLead:"Copy the message below and send it to your WhatsApp groups.",
+  msg:"Safety reminder:\n• When the siren sounds, go inside and stay away from windows.\n• Never film or share videos of missiles, drones, or debris. It is against the law.\n• Report anything suspicious in the sky in the Tawakkalna app (Suspicious Aerial Sightings).\n• Do not go near debris. Call Civil Defense: 998.",
+  guide:"Full guide:",
+  copy:"Copy message", wa:"Open WhatsApp", copied:"Copied", copyFail:"Select the text above to copy it",
+  checked:"Last checked against official sources: 12 October 2026",
+  srcT:"SOURCES",
+  foot:"Not affiliated with any government agency. If official guidance changes, follow the official guidance."
+},
+tl:{
+  draft:"",
+  hero:"Manatili sa loob. Huwag mag-video. Mag-report.",
+  lede:"Mga tagubilin sa kaligtasan para sa lahat ng nakatira sa Saudi Arabia sa kasalukuyang sitwasyon. Maikli, simple, at batay lamang sa opisyal na abiso.",
+  note:"Proyekto ito ng isang boluntaryo. Hindi ito website ng gobyerno. Lahat ng tagubilin dito ay mula sa opisyal na pahayag ng Saudi, na naka-link sa ibaba.",
+  sos:"Emergency ng Civil Defense",
+  toneT:"Alamin ang tatlong tunog ng sirena",
+  toneLead:"Bawat tunog ay tumatagal ng 60 segundo.",
+  tones:[["Malapit na ang panganib","Paputol-putol na tunog","Pumunta na sa ligtas na lugar."],["Nangyayari na ang panganib","Pataas-pababang tunog, parang alon","Dapat nasa loob ka na. Kung hindi pa, pumasok agad."],["Lumipas na ang panganib","Isang mahaba at tuloy-tuloy na tunog","Sundin pa rin ang opisyal na tagubilin bago lumabas."]],
+  alert:"Maaari ring makatanggap ang iyong telepono ng babalang mensahe na may espesyal na tunog mula sa National Early Warning Platform ng Saudi Arabia. Huwag itong balewalain.",
+  sirenT:"Kung nasa loob ka ng gusali",
+  sirenL:["Pumunta sa pinakaligtas na lugar sa loob. Pinakamainam ang kuwartong nasa loob, malayo sa bintana.","Manatili roon hanggang lumipas ang panganib.","Lumayo sa mga bintana at salamin. Huwag pumunta sa balkonahe o bubong.","Sundin lamang ang opisyal na tagubilin."],
+  outT:"Kung nasa labas ka o nagmamaneho",
+  outL:["Pumasok agad sa pinakamalapit na gusali. Lumayo sa mga bukas na lugar.","Lumayo sa salamin.","Kung nagmamaneho ka, tumabi sa gilid ng kalsada, malayo sa mga tulay at matataas na gusali.","Huwag tumigil para manood o mag-video."],
+  filmT:"Huwag kailanman mag-video. Huwag kailanman mag-share.",
+  filmLead:"Huwag kunan ng litrato o video ang mga missile, drone, ang pagharang sa mga ito, o ang mga lugar na binagsakan ng debris. Kahit para lang ipadala sa kaibigan o pamilya.",
+  filmL:["Nagbabala ang Ministry of Interior na ang pagkuha, pag-post, o pag-share ng ganitong impormasyon ay maaaring humantong sa kasong legal.","Para ito sa lahat ng nasa Saudi Arabia, mamamayan man o dayuhang residente.","Ang pag-forward ng video na natanggap mo ay pag-share din. Burahin ito at huwag nang ipasa.","Bakit: maaaring ipakita ng mga video na ito sa kalaban kung nasaan ang air defense at kung paano ito gumagana. Naglalagay ito ng buhay sa panganib."],
+  repT:"May nakitang drone o missile sa langit? I-report ito.",
+  repLead:"May serbisyo ang Ministry of Defense para mag-report sa loob ng Tawakkalna app.",
+  repL:["Manatili sa ligtas na lugar. Huwag lumabas para tumingin.","Buksan ang Tawakkalna app.","Hanapin ang serbisyong Suspicious Aerial Sightings. Sa Arabic: "+AR,"Ipadala ang iyong report sa pamamagitan ng app."],
+  debT:"May nakitang debris o kakaibang bagay?",
+  debL:["Huwag lumapit. Huwag hawakan.","Huwag magtipon sa paligid nito o tumayo para manood.","Huwag itong kunan ng video."],
+  debCall:"Tumawag sa Civil Defense:",
+  newsT:"Magtiwala lamang sa opisyal na balita",
+  newsL:["Huwag paniwalaan o ipasa ang mga tsismis, voice message, o video mula sa hindi kilalang pinagmulan.","Kumuha ng balita mula sa opisyal na channel ng Saudi, gaya ng Civil Defense (998.gov.sa, @SaudiDCD) at Saudi Press Agency."],
+  embT:"Ang inyong embahada",
+  embLead:"Makakatulong ang inyong embahada kung may mangyari sa iyo. I-save na ngayon ang opisyal na pahina nito.",
+  helpT:"Gustong tumulong? Gamitin ang opisyal na paraan",
+  helpLead:"Kung gusto mong tumulong, ito ang mga opisyal na paraan.",
+  helpL:["<b>Mag-donate ng dugo:</b> gamitin ang Wateen app ng Ministry of Health para makahanap ng blood bank na malapit sa iyo.","<b>Mag-volunteer:</b> tingnan ang National Volunteer Portal sa "+NVG+" para sa mga oportunidad na bukas sa iyo.","Huwag magpadala ng pera sa mga humihingi ng donasyon sa WhatsApp o social media. Maaaring scam ito."],
+  quizT:"Mabilis na pagsusulit",
+  quizLead:"Tatlong tanong. Pindutin ang sagot.",
+  right:"Tama.", wrong:"Hindi tama. Nakamarka ang tamang sagot.",
+  quiz:[
+    ["May nakita kang debris ng drone sa kalsada. Ano ang gagawin mo?",["Kukunan ng litrato para balaan ang iba","Lalayo at tatawag sa 998","Aalisin ito sa kalsada"],1],
+    ["May kaibigang nagpadala sa iyo ng video ng missile na hinarang. Ano ang gagawin mo?",["Ipapasa sa pamilya","Ipo-post na may babala","Buburahin at hindi ipapasa"],2],
+    ["Tumunog ang sirena habang nagmamaneho ka. Ano ang gagawin mo?",["Bibilisan para makauwi","Tatabi, malayo sa tulay at matataas na gusali","Hihinto sa ilalim ng tulay para magtago"],1]
+  ],
+  shareT:"Ibahagi ito sa iba",
+  shareLead:"Kopyahin ang mensahe sa ibaba at ipadala sa inyong mga WhatsApp group.",
+  msg:"Paalala sa kaligtasan:\n• Kapag tumunog ang sirena, pumasok sa loob at lumayo sa bintana.\n• Huwag kailanman kunan o i-share ang video ng missile, drone, o debris. Labag ito sa batas.\n• I-report ang kahina-hinalang bagay sa langit sa Tawakkalna app (Suspicious Aerial Sightings).\n• Huwag lumapit sa debris. Tumawag sa Civil Defense: 998.",
+  guide:"Buong gabay:",
+  copy:"Kopyahin ang mensahe", wa:"Buksan ang WhatsApp", copied:"Nakopya na", copyFail:"Piliin ang teksto sa itaas para kopyahin",
+  checked:"Huling sinuri laban sa opisyal na pinagmulan: 12 Oktubre 2026",
+  srcT:"MGA PINAGMULAN",
+  foot:"Walang kaugnayan sa anumang ahensya ng gobyerno. Kapag nagbago ang opisyal na abiso, sundin ang opisyal na abiso."
+},
+ur:{
+  draft:"",
+  hero:"اندر رہیں۔ ویڈیو نہ بنائیں۔ رپورٹ کریں۔",
+  lede:"موجودہ حالات میں سعودی عرب میں رہنے والے ہر شخص کے لیے حفاظتی ہدایات۔ مختصر، آسان، اور صرف سرکاری ہدایات پر مبنی۔",
+  note:"یہ ایک رضاکارانہ منصوبہ ہے۔ یہ سرکاری ویب سائٹ نہیں ہے۔ یہاں کی ہر ہدایت سعودی حکومت کے سرکاری بیانات سے لی گئی ہے، جن کے لنک نیچے دیے گئے ہیں۔",
+  sos:"سول ڈیفنس ایمرجنسی",
+  toneT:"سائرن کی تین آوازیں پہچانیں",
+  toneLead:"ہر آواز 60 سیکنڈ تک رہتی ہے۔",
+  tones:[["خطرہ قریب ہے","رک رک کر بجنے والی آواز","ابھی کسی محفوظ جگہ چلے جائیں۔"],["خطرہ جاری ہے","اونچی نیچی، لہر جیسی آواز","آپ کو پہلے ہی اندر ہونا چاہیے۔ اگر نہیں ہیں تو فوراً اندر جائیں۔"],["خطرہ ٹل گیا","ایک لمبی، مسلسل آواز","باہر جانے سے پہلے پھر بھی سرکاری ہدایات پر عمل کریں۔"]],
+  alert:"آپ کے فون پر سعودی عرب کے قومی ابتدائی انتباہی نظام (National Early Warning Platform) کی طرف سے خاص آواز کے ساتھ انتباہی پیغام بھی آ سکتا ہے۔ اسے نظرانداز نہ کریں۔",
+  sirenT:"اگر آپ کسی عمارت کے اندر ہیں",
+  sirenL:["اندر سب سے محفوظ جگہ پر جائیں۔ کھڑکیوں سے دور اندرونی کمرہ سب سے بہتر ہے۔","خطرہ ٹلنے تک وہیں رہیں۔","کھڑکیوں اور شیشے سے دور رہیں۔ بالکونی یا چھت پر نہ جائیں۔","صرف سرکاری ہدایات پر عمل کریں۔"],
+  outT:"اگر آپ باہر ہیں یا گاڑی چلا رہے ہیں",
+  outL:["فوراً قریب ترین عمارت میں چلے جائیں۔ کھلی جگہوں سے دور رہیں۔","شیشے سے دور رہیں۔","اگر آپ گاڑی چلا رہے ہیں تو سڑک کے کنارے، پلوں اور اونچی عمارتوں سے دور گاڑی روک لیں۔","دیکھنے یا ویڈیو بنانے کے لیے نہ رکیں۔"],
+  filmT:"کبھی ویڈیو نہ بنائیں۔ کبھی شیئر نہ کریں۔",
+  filmLead:"میزائل، ڈرون، انہیں روکنے کی کارروائی، یا ملبہ گرنے کی جگہوں کی تصویر یا ویڈیو نہ بنائیں۔ دوستوں یا گھر والوں کو بھیجنے کے لیے بھی نہیں۔",
+  filmL:["سعودی وزارتِ داخلہ نے خبردار کیا ہے کہ ایسی معلومات کی ویڈیو بنانا، شائع کرنا یا شیئر کرنا قانونی کارروائی کا باعث بن سکتا ہے۔","یہ سعودی عرب میں موجود ہر شخص پر لاگو ہوتا ہے، شہری ہو یا غیر ملکی مقیم۔","کسی اور کی بھیجی ہوئی ویڈیو آگے بھیجنا بھی شیئر کرنا ہے۔ اسے ڈیلیٹ کر دیں اور آگے نہ بھیجیں۔","کیوں: ایسی ویڈیوز دشمن کو بتا سکتی ہیں کہ فضائی دفاع کہاں ہے اور کیسے کام کرتا ہے۔ اس سے جانیں خطرے میں پڑتی ہیں۔"],
+  repT:"آسمان میں ڈرون یا میزائل دیکھا؟ رپورٹ کریں۔",
+  repLead:"سعودی وزارتِ دفاع نے توکلنا (Tawakkalna) ایپ میں رپورٹ کرنے کی سروس شروع کی ہے۔",
+  repL:["کسی محفوظ جگہ پر رہیں۔ دیکھنے کے لیے باہر نہ جائیں۔","توکلنا ایپ کھولیں۔","<bdi style=\"white-space:nowrap\">Suspicious Aerial Sightings</bdi> نام کی سروس تلاش کریں۔ عربی میں: "+AR,"ایپ کے ذریعے اپنی رپورٹ بھیجیں۔"],
+  debT:"ملبہ یا کوئی عجیب چیز ملی؟",
+  debL:["اس کے قریب نہ جائیں۔ اسے ہاتھ نہ لگائیں۔","اس کے ارد گرد جمع نہ ہوں اور کھڑے ہو کر نہ دیکھیں۔","اس کی ویڈیو نہ بنائیں۔"],
+  debCall:"سول ڈیفنس کو کال کریں:",
+  newsT:"صرف سرکاری خبروں پر بھروسہ کریں",
+  newsL:["نامعلوم ذرائع سے آنے والی افواہوں، وائس نوٹس یا ویڈیوز پر یقین نہ کریں اور انہیں آگے نہ بھیجیں۔","خبریں سعودی عرب کے سرکاری ذرائع سے لیں، جیسے سول ڈیفنس (998.gov.sa، @SaudiDCD) اور سعودی پریس ایجنسی۔"],
+  embT:"آپ کا سفارت خانہ",
+  embLead:"اگر آپ کے ساتھ کچھ ہو جائے تو آپ کا سفارت خانہ مدد کر سکتا ہے۔ اس کا سرکاری صفحہ ابھی محفوظ کر لیں۔",
+  helpT:"مدد کرنا چاہتے ہیں؟ سرکاری ذرائع استعمال کریں",
+  helpLead:"اگر آپ کچھ کرنا چاہتے ہیں تو یہ سرکاری طریقے ہیں۔",
+  helpL:["<b>خون کا عطیہ:</b> وزارتِ صحت کی Wateen ایپ سے اپنے قریب بلڈ بینک تلاش کریں۔","<b>رضاکاری:</b> "+NVG+" پر نیشنل والنٹیئر پورٹل میں اپنے لیے دستیاب مواقع دیکھیں۔","واٹس ایپ یا سوشل میڈیا پر چندہ مانگنے والوں کو پیسے نہ بھیجیں۔ یہ دھوکہ ہو سکتا ہے۔"],
+  quizT:"مختصر جائزہ",
+  quizLead:"تین سوال۔ جواب پر ٹیپ کریں۔",
+  right:"درست۔", wrong:"درست نہیں۔ صحیح جواب نشان زد ہے۔",
+  quiz:[
+    ["آپ کو سڑک پر ڈرون کا ملبہ نظر آتا ہے۔ آپ کیا کریں گے؟",["دوسروں کو خبردار کرنے کے لیے تصویر لیں گے","دور رہیں گے اور 998 پر کال کریں گے","اسے سڑک سے ہٹا دیں گے"],1],
+    ["ایک دوست آپ کو میزائل روکے جانے کی ویڈیو بھیجتا ہے۔ آپ کیا کریں گے؟",["گھر والوں کو آگے بھیج دیں گے","انتباہ کے ساتھ پوسٹ کریں گے","ڈیلیٹ کر دیں گے اور شیئر نہیں کریں گے"],2],
+    ["گاڑی چلاتے ہوئے سائرن بجتا ہے۔ آپ کیا کریں گے؟",["گھر پہنچنے کے لیے تیز چلائیں گے","پلوں اور اونچی عمارتوں سے دور گاڑی روکیں گے","پناہ کے لیے پل کے نیچے رکیں گے"],1]
+  ],
+  shareT:"یہ دوسروں تک پہنچائیں",
+  shareLead:"نیچے دیا گیا پیغام کاپی کریں اور اپنے واٹس ایپ گروپس میں بھیجیں۔",
+  msg:"حفاظتی یاد دہانی:\n• سائرن بجے تو اندر جائیں اور کھڑکیوں سے دور رہیں۔\n• میزائل، ڈرون یا ملبے کی ویڈیو کبھی نہ بنائیں اور نہ شیئر کریں۔ یہ قانون کے خلاف ہے۔\n• آسمان میں کوئی مشکوک چیز نظر آئے تو توکلنا ایپ (Suspicious Aerial Sightings) میں رپورٹ کریں۔\n• ملبے کے قریب نہ جائیں۔ سول ڈیفنس کو کال کریں: 998",
+  guide:"مکمل رہنمائی:",
+  copy:"پیغام کاپی کریں", wa:"واٹس ایپ کھولیں", copied:"کاپی ہو گیا", copyFail:"کاپی کرنے کے لیے اوپر والا متن منتخب کریں",
+  checked:"سرکاری ذرائع سے آخری جانچ: 12 اکتوبر 2026",
+  srcT:"ذرائع",
+  foot:"کسی سرکاری ادارے سے وابستہ نہیں۔ اگر سرکاری ہدایات بدلیں تو سرکاری ہدایات پر عمل کریں۔"
+},
+hi:{
+  draft:"",
+  hero:"अंदर रहें। वीडियो न बनाएं। रिपोर्ट करें।",
+  lede:"मौजूदा हालात में सऊदी अरब में रहने वाले हर व्यक्ति के लिए सुरक्षा निर्देश। छोटे, आसान, और केवल आधिकारिक दिशानिर्देशों पर आधारित।",
+  note:"यह एक स्वयंसेवी प्रोजेक्ट है। यह सरकारी वेबसाइट नहीं है। यहां का हर निर्देश सऊदी सरकार के आधिकारिक बयानों से लिया गया है, जिनके लिंक नीचे दिए गए हैं।",
+  sos:"सिविल डिफेंस इमरजेंसी",
+  toneT:"सायरन की तीन आवाज़ें पहचानें",
+  toneLead:"हर आवाज़ 60 सेकंड तक चलती है।",
+  tones:[["खतरा नज़दीक है","रुक-रुक कर बजने वाली आवाज़","अभी किसी सुरक्षित जगह जाएं।"],["खतरा शुरू हो गया है","ऊपर-नीचे होती, लहर जैसी आवाज़","आपको पहले से अंदर होना चाहिए। अगर नहीं हैं, तो तुरंत अंदर जाएं।"],["खतरा टल गया","एक लंबी, लगातार आवाज़","बाहर जाने से पहले भी आधिकारिक निर्देशों का पालन करें।"]],
+  alert:"आपके फ़ोन पर सऊदी अरब के नेशनल अर्ली वॉर्निंग प्लेटफ़ॉर्म से खास आवाज़ के साथ चेतावनी संदेश भी आ सकता है। इसे नज़रअंदाज़ न करें।",
+  sirenT:"अगर आप किसी इमारत के अंदर हैं",
+  sirenL:["अंदर सबसे सुरक्षित जगह पर जाएं। खिड़कियों से दूर अंदर वाला कमरा सबसे अच्छा है।","खतरा टलने तक वहीं रहें।","खिड़कियों और कांच से दूर रहें। बालकनी या छत पर न जाएं।","केवल आधिकारिक निर्देशों का पालन करें।"],
+  outT:"अगर आप बाहर हैं या गाड़ी चला रहे हैं",
+  outL:["तुरंत सबसे नज़दीकी इमारत में जाएं। खुली जगहों से दूर रहें।","कांच से दूर रहें।","अगर आप गाड़ी चला रहे हैं, तो सड़क किनारे, पुलों और ऊंची इमारतों से दूर गाड़ी रोक दें।","देखने या वीडियो बनाने के लिए न रुकें।"],
+  filmT:"कभी वीडियो न बनाएं। कभी शेयर न करें।",
+  filmLead:"मिसाइल, ड्रोन, उन्हें रोकने की कार्रवाई, या मलबा गिरने की जगहों की फ़ोटो या वीडियो न लें। दोस्तों या परिवार को भेजने के लिए भी नहीं।",
+  filmL:["सऊदी गृह मंत्रालय ने चेतावनी दी है कि ऐसी जानकारी का वीडियो बनाना, प्रकाशित करना या शेयर करना कानूनी कार्रवाई का कारण बन सकता है।","यह सऊदी अरब में मौजूद हर व्यक्ति पर लागू होता है, चाहे नागरिक हो या विदेशी निवासी।","किसी और से मिला वीडियो आगे भेजना भी शेयर करना है। उसे डिलीट करें और आगे न भेजें।","क्यों: ऐसे वीडियो दुश्मन को बता सकते हैं कि हवाई सुरक्षा कहां है और कैसे काम करती है। इससे जानें खतरे में पड़ती हैं।"],
+  repT:"आसमान में ड्रोन या मिसाइल देखा? रिपोर्ट करें।",
+  repLead:"सऊदी रक्षा मंत्रालय ने तवक्कलना (Tawakkalna) ऐप में रिपोर्ट करने की सेवा शुरू की है।",
+  repL:["सुरक्षित जगह पर रहें। देखने के लिए बाहर न जाएं।","तवक्कलना ऐप खोलें।","Suspicious Aerial Sightings नाम की सेवा खोजें। अरबी में: "+AR,"ऐप के ज़रिए अपनी रिपोर्ट भेजें।"],
+  debT:"मलबा या कोई अजीब चीज़ मिली?",
+  debL:["उसके पास न जाएं। उसे न छुएं।","उसके आसपास भीड़ न लगाएं और खड़े होकर न देखें।","उसका वीडियो न बनाएं।"],
+  debCall:"सिविल डिफेंस को कॉल करें:",
+  newsT:"केवल आधिकारिक खबरों पर भरोसा करें",
+  newsL:["अनजान स्रोतों से आई अफ़वाहों, वॉइस नोट्स या वीडियो पर भरोसा न करें और उन्हें आगे न भेजें।","खबरें सऊदी अरब के आधिकारिक स्रोतों से लें, जैसे सिविल डिफेंस (998.gov.sa, @SaudiDCD) और सऊदी प्रेस एजेंसी।"],
+  embT:"आपका दूतावास",
+  embLead:"अगर आपके साथ कुछ हो जाए तो आपका दूतावास मदद कर सकता है। उसका आधिकारिक पेज अभी सेव कर लें।",
+  helpT:"मदद करना चाहते हैं? आधिकारिक तरीके अपनाएं",
+  helpLead:"अगर आप कुछ करना चाहते हैं, तो ये आधिकारिक तरीके हैं।",
+  helpL:["<b>रक्तदान:</b> स्वास्थ्य मंत्रालय के Wateen ऐप से अपने पास का ब्लड बैंक खोजें।","<b>स्वयंसेवा:</b> "+NVG+" पर नेशनल वॉलंटियर पोर्टल में अपने लिए उपलब्ध अवसर देखें।","व्हाट्सऐप या सोशल मीडिया पर दान मांगने वालों को पैसे न भेजें। यह धोखा हो सकता है।"],
+  quizT:"छोटा सा टेस्ट",
+  quizLead:"तीन सवाल। जवाब पर टैप करें।",
+  right:"सही।", wrong:"सही नहीं। सही जवाब चिह्नित है।",
+  quiz:[
+    ["आपको सड़क पर ड्रोन का मलबा दिखता है। आप क्या करेंगे?",["दूसरों को सावधान करने के लिए फ़ोटो लेंगे","दूर रहेंगे और 998 पर कॉल करेंगे","उसे सड़क से हटा देंगे"],1],
+    ["एक दोस्त आपको मिसाइल रोके जाने का वीडियो भेजता है। आप क्या करेंगे?",["परिवार को आगे भेज देंगे","चेतावनी के साथ पोस्ट करेंगे","डिलीट करेंगे और शेयर नहीं करेंगे"],2],
+    ["गाड़ी चलाते समय सायरन बजता है। आप क्या करेंगे?",["घर पहुंचने के लिए तेज़ चलाएंगे","पुलों और ऊंची इमारतों से दूर गाड़ी रोकेंगे","छिपने के लिए पुल के नीचे रुकेंगे"],1]
+  ],
+  shareT:"इसे दूसरों के साथ शेयर करें",
+  shareLead:"नीचे दिया संदेश कॉपी करें और अपने व्हाट्सऐप ग्रुप में भेजें।",
+  msg:"सुरक्षा रिमाइंडर:\n• सायरन बजे तो अंदर जाएं और खिड़कियों से दूर रहें।\n• मिसाइल, ड्रोन या मलबे का वीडियो कभी न बनाएं और न शेयर करें। यह कानून के खिलाफ है।\n• आसमान में कुछ संदिग्ध दिखे तो तवक्कलना ऐप (Suspicious Aerial Sightings) में रिपोर्ट करें।\n• मलबे के पास न जाएं। सिविल डिफेंस को कॉल करें: 998",
+  guide:"पूरी जानकारी:",
+  copy:"संदेश कॉपी करें", wa:"व्हाट्सऐप खोलें", copied:"कॉपी हो गया", copyFail:"कॉपी करने के लिए ऊपर का टेक्स्ट चुनें",
+  checked:"आधिकारिक स्रोतों से आखिरी जांच: 12 अक्टूबर 2026",
+  srcT:"स्रोत",
+  foot:"किसी सरकारी संस्था से जुड़ा नहीं है। अगर आधिकारिक निर्देश बदलें, तो आधिकारिक निर्देशों का पालन करें।"
+},
+bn:{
+  draft:"",
+  hero:"ভেতরে থাকুন। ভিডিও করবেন না। রিপোর্ট করুন।",
+  lede:"বর্তমান পরিস্থিতিতে সৌদি আরবে বসবাসকারী সবার জন্য নিরাপত্তা নির্দেশনা। সংক্ষিপ্ত, সহজ, এবং শুধুমাত্র সরকারি নির্দেশনার ভিত্তিতে।",
+  note:"এটি একটি স্বেচ্ছাসেবী প্রকল্প। এটি সরকারি ওয়েবসাইট নয়। এখানকার প্রতিটি নির্দেশনা সৌদি সরকারের আনুষ্ঠানিক বিবৃতি থেকে নেওয়া, যার লিংক নিচে দেওয়া আছে।",
+  sos:"সিভিল ডিফেন্স জরুরি নম্বর",
+  toneT:"সাইরেনের তিনটি শব্দ চিনে রাখুন",
+  toneLead:"প্রতিটি শব্দ 60 সেকেন্ড ধরে চলে।",
+  tones:[["বিপদ কাছে","থেমে থেমে বাজা শব্দ","এখনই নিরাপদ জায়গায় যান।"],["বিপদ ঘটছে","ওঠানামা করা, ঢেউয়ের মতো শব্দ","আপনার আগে থেকেই ভেতরে থাকার কথা। না থাকলে এখনই ভেতরে যান।"],["বিপদ কেটে গেছে","একটানা লম্বা শব্দ","বাইরে যাওয়ার আগে এখনও সরকারি নির্দেশনা মেনে চলুন।"]],
+  alert:"আপনার ফোনে সৌদি আরবের ন্যাশনাল আর্লি ওয়ার্নিং প্ল্যাটফর্ম থেকে বিশেষ শব্দসহ সতর্কবার্তাও আসতে পারে। এটি উপেক্ষা করবেন না।",
+  sirenT:"আপনি যদি কোনো ভবনের ভেতরে থাকেন",
+  sirenL:["ভেতরের সবচেয়ে নিরাপদ জায়গায় যান। জানালা থেকে দূরে ভেতরের ঘর সবচেয়ে ভালো।","বিপদ না কাটা পর্যন্ত সেখানেই থাকুন।","জানালা ও কাচ থেকে দূরে থাকুন। বারান্দা বা ছাদে যাবেন না।","শুধুমাত্র সরকারি নির্দেশনা মেনে চলুন।"],
+  outT:"আপনি যদি বাইরে থাকেন বা গাড়ি চালান",
+  outL:["এখনই সবচেয়ে কাছের ভবনে ঢুকে পড়ুন। খোলা জায়গা থেকে দূরে থাকুন।","কাচ থেকে দূরে থাকুন।","গাড়ি চালালে রাস্তার পাশে, সেতু ও উঁচু ভবন থেকে দূরে গাড়ি থামান।","দেখার বা ভিডিও করার জন্য থামবেন না।"],
+  filmT:"কখনো ভিডিও করবেন না। কখনো শেয়ার করবেন না।",
+  filmLead:"ক্ষেপণাস্ত্র, ড্রোন, সেগুলো প্রতিহত করার দৃশ্য বা ধ্বংসাবশেষ পড়ার জায়গার ছবি বা ভিডিও তুলবেন না। বন্ধু বা পরিবারকে পাঠানোর জন্যও না।",
+  filmL:["সৌদি স্বরাষ্ট্র মন্ত্রণালয় সতর্ক করেছে যে এ ধরনের তথ্যের ভিডিও করা, প্রকাশ করা বা শেয়ার করা আইনি ব্যবস্থার কারণ হতে পারে।","এটি সৌদি আরবে থাকা সবার জন্য প্রযোজ্য, নাগরিক হোক বা বিদেশি বাসিন্দা।","অন্যের পাঠানো ভিডিও ফরোয়ার্ড করাও শেয়ার করা। সেটি মুছে ফেলুন এবং আর পাঠাবেন না।","কেন: এসব ভিডিও শত্রুকে জানিয়ে দিতে পারে আকাশ প্রতিরক্ষা কোথায় এবং কীভাবে কাজ করে। এতে মানুষের জীবন ঝুঁকিতে পড়ে।"],
+  repT:"আকাশে ড্রোন বা ক্ষেপণাস্ত্র দেখেছেন? রিপোর্ট করুন।",
+  repLead:"সৌদি প্রতিরক্ষা মন্ত্রণালয় তাওয়াক্কালনা (Tawakkalna) অ্যাপে রিপোর্ট করার সেবা চালু করেছে।",
+  repL:["নিরাপদ জায়গায় থাকুন। দেখার জন্য বাইরে যাবেন না।","তাওয়াক্কালনা অ্যাপ খুলুন।","Suspicious Aerial Sightings নামের সেবাটি খুঁজুন। আরবিতে: "+AR,"অ্যাপের মাধ্যমে আপনার রিপোর্ট পাঠান।"],
+  debT:"ধ্বংসাবশেষ বা অদ্ভুত কোনো জিনিস দেখেছেন?",
+  debL:["এর কাছে যাবেন না। এটি স্পর্শ করবেন না।","এর চারপাশে ভিড় করবেন না বা দাঁড়িয়ে দেখবেন না।","এর ভিডিও করবেন না।"],
+  debCall:"সিভিল ডিফেন্সে কল করুন:",
+  newsT:"শুধু সরকারি খবরে বিশ্বাস করুন",
+  newsL:["অজানা উৎস থেকে আসা গুজব, ভয়েস নোট বা ভিডিও বিশ্বাস করবেন না এবং ফরোয়ার্ড করবেন না।","সৌদি আরবের সরকারি উৎস থেকে খবর নিন, যেমন সিভিল ডিফেন্স (998.gov.sa, @SaudiDCD) এবং সৌদি প্রেস এজেন্সি।"],
+  embT:"আপনার দূতাবাস",
+  embLead:"আপনার কিছু হলে দূতাবাস সাহায্য করতে পারে। এখনই এর সরকারি পেজটি সেভ করে রাখুন।",
+  helpT:"সাহায্য করতে চান? সরকারি মাধ্যম ব্যবহার করুন",
+  helpLead:"আপনি যদি কিছু করতে চান, এগুলোই সরকারি উপায়।",
+  helpL:["<b>রক্তদান:</b> স্বাস্থ্য মন্ত্রণালয়ের Wateen অ্যাপ দিয়ে কাছের ব্লাড ব্যাংক খুঁজুন।","<b>স্বেচ্ছাসেবা:</b> "+NVG+" -এ ন্যাশনাল ভলান্টিয়ার পোর্টালে আপনার জন্য খোলা সুযোগগুলো দেখুন।","হোয়াটসঅ্যাপ বা সোশ্যাল মিডিয়ায় অনুদান চাওয়া কাউকে টাকা পাঠাবেন না। এটি প্রতারণা হতে পারে।"],
+  quizT:"ছোট্ট যাচাই",
+  quizLead:"তিনটি প্রশ্ন। উত্তরে চাপ দিন।",
+  right:"সঠিক।", wrong:"সঠিক নয়। সঠিক উত্তর চিহ্নিত করা আছে।",
+  quiz:[
+    ["রাস্তায় ড্রোনের ধ্বংসাবশেষ দেখলেন। কী করবেন?",["অন্যদের সতর্ক করতে ছবি তুলবেন","দূরে থাকবেন এবং 998-এ কল করবেন","রাস্তা থেকে সরিয়ে দেবেন"],1],
+    ["এক বন্ধু আপনাকে ক্ষেপণাস্ত্র প্রতিহত করার ভিডিও পাঠাল। কী করবেন?",["পরিবারকে ফরোয়ার্ড করবেন","সতর্কবার্তাসহ পোস্ট করবেন","মুছে ফেলবেন এবং শেয়ার করবেন না"],2],
+    ["গাড়ি চালানোর সময় সাইরেন বাজল। কী করবেন?",["বাড়ি পৌঁছাতে জোরে চালাবেন","সেতু ও উঁচু ভবন থেকে দূরে গাড়ি থামাবেন","আড়ালের জন্য সেতুর নিচে থামবেন"],1]
+  ],
+  shareT:"অন্যদের সাথে শেয়ার করুন",
+  shareLead:"নিচের বার্তাটি কপি করে আপনার হোয়াটসঅ্যাপ গ্রুপে পাঠান।",
+  msg:"নিরাপত্তা স্মরণিকা:\n• সাইরেন বাজলে ভেতরে যান এবং জানালা থেকে দূরে থাকুন।\n• ক্ষেপণাস্ত্র, ড্রোন বা ধ্বংসাবশেষের ভিডিও কখনো করবেন না বা শেয়ার করবেন না। এটি আইনবিরোধী।\n• আকাশে সন্দেহজনক কিছু দেখলে তাওয়াক্কালনা অ্যাপে (Suspicious Aerial Sightings) রিপোর্ট করুন।\n• ধ্বংসাবশেষের কাছে যাবেন না। সিভিল ডিফেন্সে কল করুন: 998",
+  guide:"পূর্ণ নির্দেশিকা:",
+  copy:"বার্তা কপি করুন", wa:"হোয়াটসঅ্যাপ খুলুন", copied:"কপি হয়েছে", copyFail:"কপি করতে উপরের লেখাটি নির্বাচন করুন",
+  checked:"সরকারি উৎসের সাথে সর্বশেষ যাচাই: 12 অক্টোবর 2026",
+  srcT:"সূত্র",
+  foot:"কোনো সরকারি সংস্থার সাথে যুক্ত নয়। সরকারি নির্দেশনা বদলালে সরকারি নির্দেশনাই মেনে চলুন।"
+}
+};
+
+const fullMsg = lang => T[lang].msg + "\n\n" + T[lang].guide + " " + BASE + "#" + lang;
+let cur = "en";
+
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function renderTones(d){
+  document.getElementById("tone-list").innerHTML = d.tones.map((t,i) =>
+    '<li>' + WAVES[i] + '<div><b>' + esc(t[0]) + '</b><small>' + esc(t[1]) + '</small><span>' + esc(t[2]) + '</span></div></li>'
+  ).join("");
+}
+function renderEmb(lang){
+  document.getElementById("emb-list").innerHTML = EMB_ORDER[lang].map(k =>
+    '<li class="' + (MINE[lang] === k ? 'mine' : '') + '"><a href="' + EMB[k][0] + '" target="_blank" rel="noopener" dir="ltr" lang="en"><span>' + EMB[k][1] + '</span><span aria-hidden="true">↗</span></a></li>'
+  ).join("");
+}
+function renderQuiz(d){
+  const box = document.getElementById("quiz-body");
+  box.innerHTML = d.quiz.map((q,qi) =>
+    '<div class="q"><p>' + (qi+1) + '. ' + esc(q[0]) + '</p><div class="opts">' +
+    q[1].map((o,oi) => '<button type="button" id="q' + qi + 'o' + oi + '" data-q="' + qi + '" data-o="' + oi + '">' + esc(o) + '</button>').join("") +
+    '</div><p class="fb" id="fb' + qi + '" role="status" aria-live="polite"></p></div>'
+  ).join("");
+  box.querySelectorAll(".opts button").forEach(b => b.addEventListener("click", () => {
+    const qi = +b.dataset.q, oi = +b.dataset.o, ans = T[cur].quiz[qi][2];
+    const btns = box.querySelectorAll('button[data-q="' + qi + '"]');
+    btns.forEach(x => { x.disabled = true; if (+x.dataset.o === ans) x.classList.add("right"); });
+    if (oi !== ans) b.classList.add("wrong");
+    const fb = document.getElementById("fb" + qi);
+    fb.textContent = oi === ans ? T[cur].right : T[cur].wrong;
+    fb.className = "fb" + (oi === ans ? " ok" : "");
+  }));
+}
+
+function apply(lang){
+  cur = T[lang] ? lang : "en";
+  const d = T[cur];
+  const root = document.documentElement;
+  root.lang = cur;
+  root.dir = cur === "ur" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = d[el.dataset.i18n] || ""; });
+  document.querySelectorAll("[data-list]").forEach(el => {
+    el.innerHTML = d[el.dataset.list].map(t => "<li><span>" + t + "</span></li>").join("");
+  });
+  renderTones(d); renderEmb(cur); renderQuiz(d);
+  document.getElementById("msg").textContent = fullMsg(cur);
+  document.getElementById("wa").href = "https://wa.me/?text=" + encodeURIComponent(fullMsg(cur));
+  document.getElementById("draft").hidden = !d.draft;
+  document.getElementById("toast").textContent = "";
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === cur)));
+  try { localStorage.setItem("lang", cur); } catch(e){}
+}
+
+function copyText(text, toast, okMsg, failMsg, selectEl){
+  const fail = () => {
+    if (selectEl){ const r = document.createRange(); r.selectNodeContents(selectEl); const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    toast.textContent = failMsg;
+  };
+  try { navigator.clipboard.writeText(text).then(() => { toast.textContent = okMsg; }, fail); }
+  catch(e){ fail(); }
+}
+
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => apply(b.dataset.lang)));
+document.getElementById("copy").addEventListener("click", () =>
+  copyText(fullMsg(cur), document.getElementById("toast"), T[cur].copied, T[cur].copyFail, document.getElementById("msg")));
+document.querySelectorAll(".emp .chip").forEach(b => b.addEventListener("click", () =>
+  copyText(fullMsg(b.dataset.copy), document.getElementById("emp-toast"), "تم النسخ، أرسلها لهم", "النسخ ما اشتغل، افتح الصفحة بلغتهم وانسخ من أسفلها", null)));
+
+let start = "en";
+const h = location.hash.replace("#","");
+if (T[h]) start = h;
+else { try { const s = localStorage.getItem("lang"); if (s && T[s]) start = s; } catch(e){} }
+apply(start);
+</script>
+
+</body>
+</html>
